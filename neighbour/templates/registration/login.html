@@ -21,7 +21,8 @@
 
             <div class="form-group">
               <input type="submit" class="btn btn-primary btn-sm" value="Login">
-            </div>
+              <p> You dont have an account <a href="{% url 'signup' %}"> create account</a></p>
+              </div>
 
             <input type="hidden" name="next" value="{{next}}">
 
