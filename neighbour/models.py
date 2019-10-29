@@ -34,3 +34,24 @@ class Profile(models.Model):
         return f'{self.user.username} Profile' 
     def save(self,*args, **kwargs):
         super().save(*args, **kwargs)
+
+class neighbourhood(models.Model):
+    name = models.CharField(max_length=50)
+    location = models.CharField(max_length=50)
+    occupants = models.IntegerField(default=0)
+    admin = models.ForeignKey(User,null=True)
+    
+    def create_neighbourhood(self):
+        self.save()
+
+    def delete_neighbourhood(self):
+        self.save()
+
+    def update_neighbourhood(self):
+        self.save()
+    
+    def update_occupants(self):
+        self.save()
+
+    def __str__(self):
+        return self.location
