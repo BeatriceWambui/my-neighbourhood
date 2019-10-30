@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Profile,Neighbourhood,User,Businesses,Post 
+from .models import Profile,Neighbourhood,My_User,Businesses,Post 
 
 
 def SignupForm(UserCreationForm):
@@ -30,7 +30,7 @@ class NeighbourhoodForm(forms.ModelForm):
 
 class UserForm(forms.ModelForm):
         class Meta:
-            model = User
+            model = My_User
             fields = ['username','user_id','email']
 
 

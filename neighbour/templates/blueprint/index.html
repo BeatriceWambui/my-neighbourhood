@@ -18,6 +18,8 @@
       <li class="list-group-item">{{hoods.accupants}} </li>
     </ul>
     <a href="{% url 'user' %}"> <button class="btn btn-default">join</button></a>
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <a href="{% url 'neighborview' hoods.id %}"><button class="btn btn-default">NEIGHBOURS</button> </a>
   </div>
  
 {% endfor%}

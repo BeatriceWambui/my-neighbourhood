@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{%load bootstrap4%}
+{% block content %}
+
+{% for neighbourhood in neighbourhood_users %}
+
+    <div class="container">
+        <p>{{neighbourhood.username}}</p>
+        <p>{{neighbourhood.email}}</p>
+        <p>{{neighbourhood.user_id}} </p>
+    </div>
+
+{% endfor %}
+
+{% endblock %}

@@ -54,13 +54,14 @@ class Neighbourhood(models.Model):
         self.save()
 
     def __str__(self):
-        return self.location
+        return self.name
 
-class User(models.Model):
+class My_User(models.Model):
+    mainuser = models.OneToOneField(User,on_delete=models.CASCADE,blank=True,null=True) 
     username = models.CharField(max_length=50)
     email = models.EmailField()
     user_id = models.IntegerField(default=0)
-    neighborhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE, blank=True, default='1')
+    neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE, blank=True, default='1')
 
     def __str__(self):
         return self.username
@@ -68,7 +69,7 @@ class User(models.Model):
 class Businesses(models.Model):
     business_name = models.CharField(max_length=100)
     business_email = models.EmailField()
-    user = models.ForeignKey(User,unique = True,on_delete=models.CASCADE,null=True)
+    user = models.ForeignKey(My_User,unique = True,on_delete=models.CASCADE,null=True)
     neighbourhood=models.ForeignKey(Neighbourhood,unique = True,on_delete=models.CASCADE,null=True)
 
     def create_business(self):

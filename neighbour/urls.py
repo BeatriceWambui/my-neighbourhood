@@ -10,6 +10,7 @@ urlpatterns=[
     url(r'^user/',views.user,name='user'),
     url(r'^business/',views.business,name='business'),
     url(r'^search/', views.search_results, name='search_results'),
-    url(r'^post/',views.post,name='post')
+    url(r'^post/',views.post,name='post'),
+    url(r'^neighborhood/(?P<pk>\d+)',views.neighbourhoods,name='neighborview')
 
 ]

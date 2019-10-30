@@ -5,7 +5,7 @@ from .forms import SignupForm,ProfileUpdateForm,UserUpdateForm,NeighbourhoodForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile,Neighbourhood,User,Businesses,Post
+from .models import Profile,Neighbourhood,My_User,Businesses,Post
 from django.contrib import messages
 
 def signup(request):
@@ -75,6 +75,8 @@ def neighbourhood(request):
 
 def user(request):
     current_user=request.user
+    current_user_neighborhood = request.user.my_user.neighbourhood
+    users = My_User.objects.filter(neighbourhood=current_user_neighborhood)
     if request.method == 'POST':
         user = current_user
         form = UserForm(request.POST,request.FILES)
@@ -82,13 +84,22 @@ def user(request):
             username = form.cleaned_data['username']
             user_id = form.cleaned_data['user_id']
             email = form.cleaned_data['email']
-            saveUser = User(username=username,user_id=user_id,email=email)
+            saveUser = My_User(username=username,user_id=user_id,email=email)
             saveUser.save()
             return redirect(neighbourhood)
     else:
-        users = User.objects.all()
         form = UserForm()
     return render(request,'blueprint/users.html',{'form':form,'users':users})
+
+
+def neighbourhoods(request,pk):
+    specific_neighbourhood = Neighbourhood.objects.get(id=pk)
+    neighbourhood_users = My_User.objects.filter(neighbourhood=specific_neighbourhood)
+    context = {
+        "neighbourhood_users":neighbourhood_users,
+        "specific_neighbourhood":specific_neighbourhood
+    }
+    return render(request,"blueprint/specifichood.html",context)
 
 
 def business(request):
@@ -125,7 +136,6 @@ def search_results(request):
 @login_required(login_url='/accounts/login/')
 def post(request):
     current_user = request.user
-    posts = Post.objects.all()
     if request.method == 'POST':
         form = PostForm(request.POST,request.FILES)
         if form.is_valid():
@@ -135,4 +145,4 @@ def post(request):
             return redirect('index')
     else:
         form = PostForm()
-    return render(request,'blueprint/post.html',{'form':form,'posts':posts})
+    return render(request,'blueprint/post.html',{'form':form})
