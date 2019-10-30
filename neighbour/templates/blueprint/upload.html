@@ -4,10 +4,10 @@
 {{block.super}} 
 
 <div class="container" style="margin-top:3%">
-    <div class="row" style="padding-top:20%">
+    <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6"  >
-
+        <h1><b> CREATE A NEW HOOD </b></h1>
     <form action="{% url 'neighbourhood' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form form layout='inline' %}
@@ -18,7 +18,23 @@
 
     <div class="col-md-3" style="padding-bottom:27.6%"></div>
     </div>
-    
+    <div class="card-columns">
+    {% for biashara in business %}
+<div class="card" style="width: 20rem;">
+    <div class="card-header">
+      BUSINESSES
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{biashara.business_name}}</li>
+      <li class="list-group-item">{{biashara.business_email}} </li>
+    </ul>
+    <a href="{% url 'business' %}"> <button class="btn btn-default">add</button></a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <a href="/post"><button class="btn btn-default"> post</button></a>
+
+  </div>
+{% endfor%}
+</div>
 </div>
 
 {% endblock %}
