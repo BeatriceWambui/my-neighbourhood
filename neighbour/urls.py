@@ -8,7 +8,8 @@ urlpatterns=[
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^hoods/',views.neighbourhood,name='neighbourhood'),
     url(r'^user/',views.user,name='user'),
-    url(r'^business/',views.user,name='business'),
-    url(r'^search/', views.search_results, name='search_results')
+    url(r'^business/',views.business,name='business'),
+    url(r'^search/', views.search_results, name='search_results'),
+    url(r'^post/',views.post,name='post')
 
 ]
