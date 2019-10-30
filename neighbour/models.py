@@ -72,6 +72,11 @@ class Businesses(models.Model):
     user = models.ForeignKey(My_User,unique = True,on_delete=models.CASCADE,null=True)
     neighbourhood=models.ForeignKey(Neighbourhood,unique = True,on_delete=models.CASCADE,null=True)
 
+    @classmethod
+    def search_by_business_name(cls,search_term):
+        results = cls.objects.filter(business_name__icontains=search_term)
+        return results
+        
     def create_business(self):
         self.save()
 

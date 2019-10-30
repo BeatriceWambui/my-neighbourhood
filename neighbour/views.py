@@ -74,8 +74,7 @@ def neighbourhood(request):
 
 def user(request):
     current_user=request.user
-    current_user_neighborhood = request.user.my_user.neighbourhood
-    users = My_User.objects.filter(neighbourhood=current_user_neighborhood)
+    users = My_User.objects.all()
     if request.method == 'POST':
         user = current_user
         form = UserForm(request.POST,request.FILES)
@@ -114,10 +113,6 @@ def business(request):
         form2 = BusinessForm()
     return render(request,'blueprint/business.html',{'form2':form2})
 
-    @classmethod
-    def search_by_business_name(cls,search_term):
-        results = cls.objects.filter(business_name__icontains=search_term)
-        return results
 
 def search_results(request):
 
