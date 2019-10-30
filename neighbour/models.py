@@ -59,7 +59,7 @@ class Neighbourhood(models.Model):
 class User(models.Model):
     username = models.CharField(max_length=50)
     email = models.EmailField()
-    user_id = models.IntegerField(default=0 )
+    user_id = models.IntegerField(default=0)
     neighborhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE, blank=True, default='1')
 
     def __str__(self):
@@ -83,3 +83,13 @@ class Businesses(models.Model):
     def __str__(self):
         return self.business_name
 
+class Post(models.Model):
+    title=models.CharField(max_length=30)
+    description=models.TextField(max_length=250)
+    address = models.CharField(max_length=30)
+    def __str__(self):
+        return f'{self.title}'
+
+      
+    def save_post(self):
+        self.save()
