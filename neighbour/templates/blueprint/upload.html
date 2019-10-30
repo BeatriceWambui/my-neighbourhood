@@ -5,22 +5,17 @@
 
 <div class="container" style="margin-top:3%">
     <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6"  >
+      <div class="col-md-6"  >
         <h1><b> CREATE A NEW HOOD </b></h1>
     <form action="{% url 'neighbourhood' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form form layout='inline' %}
         <input class="btn btn-success" value="Submit" type="submit">
 
-    </form>
-    </div>
-
-    <div class="col-md-3" style="padding-bottom:27.6%"></div>
-    </div>
-    <div class="card-columns">
+    </form> <br>
+      <div class="card-columns">
     {% for biashara in business %}
-<div class="card" style="width: 20rem;">
+<div class="card" style="width: 14rem;">
     <div class="card-header">
       BUSINESSES
     </div>
@@ -28,12 +23,32 @@
       <li class="list-group-item">{{biashara.business_name}}</li>
       <li class="list-group-item">{{biashara.business_email}} </li>
     </ul>
-    <a href="{% url 'business' %}"> <button class="btn btn-default">add</button></a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <a href="/post"><button class="btn btn-default"> post</button></a>
+    <a href="{% url 'business' %}"> <button class="btn btn-default">add</button></a> 
 
-  </div>
+
+  </div> <br>
 {% endfor%}
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+{% for post in posts %}
+<div class="card" style="width: 30rem;">
+        <div class="card-header">
+            POSTS
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{post.title}}</li>
+          <li class="list-group-item">{{post.address}}</li>
+          <li class="list-group-item">{{post.description}} </li>
+        </ul>
+      </div>
+{% endfor %}
+<a href="/post"><button class="btn btn-default"> post</button></a>
+
+</div>
 </div>
 </div>
 

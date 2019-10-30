@@ -2,14 +2,20 @@
 {%load bootstrap4%}
 {% block content %}
 
-{% for neighbourhood in neighbourhood_users %}
+<div class="card-columns">
+        {% for neighbourhood in neighbourhood_users %}
 
-    <div class="container">
-        <p>{{neighbourhood.username}}</p>
-        <p>{{neighbourhood.email}}</p>
-        <p>{{neighbourhood.user_id}} </p>
-    </div>
-
-{% endfor %}
+        <div class="card" style="width: 20rem;">
+            <div class="card-header">
+              <b> RESIDENTS </b>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">{{neighbourhood.username}}</li>
+              <li class="list-group-item">{{neighbourhood.email}} </li>
+              <li class="list-group-item">{{neighbourhood.user_id}}</li>
+            </ul>
+          </div>
+        {%endfor%}
+        </div>
 
 {% endblock %}

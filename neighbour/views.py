@@ -25,8 +25,7 @@ def signup(request):
 @login_required(login_url='/accounts/login/')
 def index(request):
     hood = Neighbourhood.objects.all()
-    posts = Post.objects.all()
-    return render(request,'blueprint/index.html',{'hood':hood,'posts':posts})
+    return render(request,'blueprint/index.html',{'hood':hood})
 
 @login_required
 def profile(request):
@@ -58,6 +57,7 @@ def ProfileDetailView(LoginRequiredMixin, DetailView):
 
 def neighbourhood(request):
     current_user = request.user
+    posts = Post.objects.all()
     business = Businesses.objects.all()
     if request.method == 'POST':
         form = NeighbourhoodForm(request.POST,request.FILES)
@@ -70,8 +70,7 @@ def neighbourhood(request):
             return redirect(index)
     else:
         form = NeighbourhoodForm()
-        business = Businesses.objects.all()
-    return render(request,'blueprint/upload.html',{'form':form,'business':business})
+    return render(request,'blueprint/upload.html',{'form':form,'business':business,'posts':posts})
 
 def user(request):
     current_user=request.user

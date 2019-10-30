@@ -4,8 +4,11 @@
 {% load static%}
 {{block.super}}
 
-<h1 class="text-center"> ME & MY NEIGHBOURS</h1>
+<h1 class="text-center"> ME & MY NEIGHBOURS</h1> <br>
 <div class="container">
+  <div class="row">
+    <div class="col-md-10">
+
 <div class="card-columns" >
 {% for hoods in hood %}
 <div class="card" style="width: 18rem;">
@@ -24,31 +27,15 @@
  
 {% endfor%}
 </div>
-<div class="row">
-        <div class="col-md-6"> 
-
-    {% for post in posts %}
-    <div class="card" style="width: 30rem;">
-            <div class="card-header">
-                POSTS
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">{{post.title}}</li>
-              <li class="list-group-item">{{post.address}}</li>
-              <li class="list-group-item">{{post.description}} </li>
-            </ul>
-          </div>
-    {% endfor %}
-
-        </div>
-        <div class="col-md-6">
-                <p>police Line <b>999</b></p>
-                <p>healthcare Line <b>237832</b> </p>
-                <p>sonko rescue team <b>5778355</b></p>
+    </div>
+        <div class="col-md-2">
+                <p>police Line <b>999</b></p> <hr>
+                <p>healthcare Line <b>237832</b> </p> <hr>
+                <p>sonko rescue team <b>5778355</b></p> <hr>
                 <p>Fire station <b>56368736</b></p>
         </div>
 </div> <hr>
 
-
+</div>
 </div>
 {% endblock %}
