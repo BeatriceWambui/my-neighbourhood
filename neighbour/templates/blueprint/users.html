@@ -4,21 +4,40 @@
 {{block.super}} 
 
 <div class="container" style="margin-top:3%">
-    <div class="row" style="padding-top:20%">
+    <div class="row" >
     <div class="col-md-3"></div>
     <div class="col-md-6"  >
+        <div class="card" style="width: 25rem;">
+            <div class="card-body">
+                <form action="{% url 'user' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% bootstrap_form form layout='inline' %}
+                    <input class="btn btn-success" value="Submit" type="submit"> &nbsp; &nbsp;&nbsp; 
+                    <a href="{% url 'profile' %}" class="card-link"> <button class="btn btn-default">update profile</button></a>
+                </form>
+            </div>
+          </div>
 
-    <form action="{% url 'user' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% bootstrap_form form layout='inline' %}
-        <input class="btn btn-success" value="Submit" type="submit">
-
-    </form>
     </div>
 
     <div class="col-md-3" style="padding-bottom:27.6%"></div>
     </div>
     
+</div>
+<div class="card-columns">
+{%for user in users%}
+<div class="card" style="width: 20rem;">
+    <div class="card-header">
+      OCCUPANTS
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{user.username}}</li>
+      <li class="list-group-item">{{user.email}} </li>
+      <li class="list-group-item">{{user.user_id}} </li>
+      <a href="/hoods">view</a>
+    </ul>
+  </div>
+{%endfor%}
 </div>
 
 {% endblock %}
