@@ -1,3 +1,38 @@
 h1{
-    color: blueviolet;
+    color: white;
+    font-size: 80px
+}
+.container{
+    background-image: url(/static/pic1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    backface-visibility: inherit;
+    background-attachment: fixed;
+}
+button{
+    background-attachment: fixed;
+    background-color: rgba(3, 3, 3, 0.7);
+    opacity: 0.9;
+}
+#outline{
+    background-image: url(/static/pic2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    backface-visibility: inherit;
+    background-attachment: fixed;
+    color:white;
+}
+#move{
+    padding-top:15%;
+    height:80vh;
+    width: 80rem;
+    overflow:hidden;
+}
+h2{
+    color:white;
+    font-size: 50px
+}
+#one{
+    background-image: url(/static/pic2.jpg);
+    color:white;
 }

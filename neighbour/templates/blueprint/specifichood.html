@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {%load bootstrap4%}
 {% block content %}
-
+<div class="container">
 <div class="card-columns">
         {% for neighbourhood in neighbourhood_users %}
 
@@ -17,5 +17,5 @@
           </div>
         {%endfor%}
         </div>
-
+</div>
 {% endblock %}
